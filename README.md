@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# User Manager (React + Fetch + Plain CSS)
+
+> A simple user management UI to view, add, edit, delete, search, sort, filter and paginate users using JSONPlaceholder as a mock backend.
+
+API used: https://jsonplaceholder.typicode.com/users
+
+## Tech Stack
+- React (Create React App)
+- Fetch API for HTTP
+- Plain CSS (flex/grid)
+
+## Folder Structure
+- `src/pages/Users/` – page-level component (`index.js`, `index.css`)
+- `src/Components/` – reusable UI components
+  - `TopBar/` – search bar, buttons
+  - `UserTable/` – table rendering, sort triggers
+  - `Pagination/` – pagination controls
+  - `FilterPopup/` – filter form modal
+  - `UserFormModal/` – add/edit user form modal with validation
+- `src/services/api.js` – API calls to JSONPlaceholder
+
+## Getting Started
+1. Install dependencies
+   ```bash
+   npm install
+   ```
+2. Start development server
+   ```bash
+   npm start
+   ```
+   App runs at http://localhost:3000
+
+3. Build for production
+   ```bash
+   npm run build
+   ```
+
+## Features
+- View users in a table with columns: ID, First Name, Last Name, Email, Department.
+- Add/Edit/Delete users with a modal form.
+- Client-side validation (required fields, email format).
+- Search across all visible fields.
+- Column sorting (ID, First Name, Last Name, Email, Department).
+- Filter popup (first name, last name, email, department).
+- Pagination with selectable page sizes (10, 25, 50, 100).
+- Responsive layout for desktop and mobile.
+
+## Implementation Notes & Assumptions
+- JSONPlaceholder is a mock API: POST/PUT/DELETE will succeed but do not persist. The UI applies optimistic updates for a seamless experience.
+- The API returns `name` as a full name. We split it into `firstName` and `lastName` by the first space. For names without spaces, `lastName` may be empty.
+- Department is mapped from `company.name` in JSONPlaceholder. If missing, defaults to `General`.
+- Sorting, searching, filtering, and pagination are all client-side since the dataset is small (10 default records).
+- Error states show a banner at the top of the page.
+
+## How to Use
+- Click "Add User" to open the add modal. Fill the fields and submit.
+- Click "Edit" in a row to edit that user.
+- Click "Delete" to remove a user (optimistic). A confirmation dialog will appear.
+- Use the search box for quick search across all fields.
+- Click column headers to sort. Click again to toggle asc/desc.
+- Open "Filters" to apply field-specific filters.
+- Change rows per page from the pagination control.
+
+## Challenges & Future Improvements
+- JSONPlaceholder doesn’t persist mutations. In a real app, we’d re-fetch after mutate or use a state library for cache sync.
+- Add unit/integration tests (components and data utils).
+- Improve accessibility (keyboard focus traps in modals, ARIA labels).
+- Add toast notifications for success/failure.
+- Extract table sorting into a reusable hook and add multi-column sort.
+- Implement infinite scrolling as an alternative to pagination.
+- Add debounce to search input.
+
+## GitHub Submission
+1. Initialize git and commit:
+   ```bash
+   git init
+   git add .
+   git commit -m "feat: user manager with CRUD, filters, search, sort, pagination"
+   ```
+2. Create a public repository on GitHub (e.g., `user-manager`).
+3. Add remote and push:
+   ```bash
+   git branch -M main
+   git remote add origin https://github.com/<your-username>/user-manager.git
+   git push -u origin main
+   ```
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,0 +1,28 @@
+/* Users Page styles */
+.users-page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.banner {
+  background: #eef4ff;
+  color: #0b3d91;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cddcff;
+  font-size: 14px;
+}
+
+.banner.error {
+  background: #ffeef0;
+  color: #8a1e1e;
+  border-color: #ffd1d6;
+}
+
+@media (max-width: 600px) {
+  .users-page {
+    padding: 14px;
+  }
+}

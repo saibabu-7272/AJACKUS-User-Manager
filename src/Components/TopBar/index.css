@@ -1,0 +1,40 @@
+/* TopBar styles */
+.topbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+}
+
+.topbar .title {
+  margin: 0;
+}
+
+.topbar .middle { flex: 1; min-width: 260px; }
+
+.search {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e0e0ea;
+  border-radius: 8px;
+}
+
+.topbar .btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d6e2ff;
+  background: #f7faff;
+  color: #2f6feb;
+}
+
+.topbar .btn.primary {
+  background: #2f6feb;
+  color: #fff;
+  border-color: #2f6feb;
+}
+
+/* Toggle */
+.toggle { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border: 1px solid #e0e0ea; border-radius: 8px; background: #fff; }
+.toggle input { accent-color: #2f6feb; }

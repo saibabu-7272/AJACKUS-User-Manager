@@ -1,6 +1,7 @@
-.App {
-  text-align: center;
-}
+/* Base layout */
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; background: #f6f8fb; color: #1f2328; }
+.App { text-align: left; max-width: 1200px; margin: 0 auto; }
 
 .App-logo {
   height: 40vmin;
@@ -13,16 +14,7 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* Remove CRA header styles */
 
 .App-link {
   color: #61dafb;

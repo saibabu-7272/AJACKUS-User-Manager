@@ -1,0 +1,85 @@
+/* UserTable styles */
+.user-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #e8e8ef;
+  border-radius: 8px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.user-table thead th {
+  text-align: left;
+  padding: 14px 16px;
+  background: #f7f8fb;
+  border-bottom: 1px solid #e8e8ef;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-table thead th.sortable {
+  cursor: pointer;
+}
+
+.user-table thead th .dir {
+  font-style: normal;
+  color: #888;
+  font-size: 12px;
+}
+
+.user-table tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #ececf3;
+  font-size: 14px;
+}
+
+.user-table tbody tr:hover {
+  background: #fcfcff;
+}
+
+.user-table .empty {
+  text-align: center;
+  padding: 24px;
+  color: #666;
+}
+
+.row-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: #2f6feb;
+  color: #fff;
+  font-size: 13px;
+}
+
+.btn:hover { opacity: 0.9; }
+
+.btn-ghost {
+  background: transparent;
+  color: #2f6feb;
+  border-color: #d6e2ff;
+}
+
+.btn-danger {
+  background: #e55353;
+}
+
+/* Vertical grid lines */
+.user-table thead th,
+.user-table tbody td {
+  border-right: 1px solid #e8e8ef;
+}
+.user-table thead th:last-child,
+.user-table tbody td:last-child {
+  border-right: none;
+}
