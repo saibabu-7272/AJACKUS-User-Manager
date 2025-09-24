@@ -2,6 +2,8 @@
 
 > A simple user management UI to view, add, edit, delete, search, sort, filter and paginate users using JSONPlaceholder as a mock backend.
 
+Live Link: [https://ajackus-user-manager.vercel.app/](https://ajackus-user-manager.vercel.app/)
+
 API used: https://jsonplaceholder.typicode.com/users
 
 ## Tech Stack
