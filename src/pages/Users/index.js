@@ -55,9 +55,7 @@ export default function UsersPage() {
   }
   function dismissToast(id) { setToasts((t) => t.filter(x => x.id !== id)); }
 
-  // Infinite scroll state
-  const [infinite, setInfinite] = useState(false);
-  const [itemsToShow, setItemsToShow] = useState(10);
+  // Infinite scroll removed; using pagination only
 
   useEffect(() => {
     const ac = new AbortController();
@@ -126,29 +124,6 @@ export default function UsersPage() {
   const currentPage = Math.min(page, totalPages);
   const startIdx = (currentPage - 1) * pageSize;
   const pageItems = sorted.slice(startIdx, startIdx + pageSize);
-
-  // Infinite list items
-  const infiniteItems = sorted.slice(0, itemsToShow);
-
-  // Scroll listener for infinite mode
-  useEffect(() => {
-    if (!infinite) return;
-    function onScroll() {
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
-      if (nearBottom && itemsToShow < total) {
-        setItemsToShow((n) => Math.min(total, n + pageSize));
-      }
-    }
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [infinite, itemsToShow, total, pageSize]);
-
-  // Reset itemsToShow when filters/search/sort change or when enabling infinite
-  useEffect(() => {
-    if (infinite) {
-      setItemsToShow(pageSize);
-    }
-  }, [infinite, search, JSON.stringify(filters), sortKey, sortDir, pageSize]);
 
   function handleSort(nextKey) {
     if (nextKey === sortKey) {
@@ -248,8 +223,6 @@ export default function UsersPage() {
         onSearchChange={(v) => setSearchInput(v)}
         onAdd={openAdd}
         onOpenFilters={() => setShowFilters(true)}
-        infinite={infinite}
-        onToggleInfinite={(v) => setInfinite(v)}
       />
 
       {error && <div className="banner error">{error}</div>}
@@ -258,7 +231,7 @@ export default function UsersPage() {
       {!loading && (
         <>
           <UserTable
-            items={infinite ? infiniteItems : pageItems}
+            items={pageItems}
             sortKey={sortKey}
             sortDir={sortDir}
             onSort={handleSort}
@@ -266,19 +239,14 @@ export default function UsersPage() {
             onDelete={handleDelete}
           />
 
-          {!infinite && (
-            <Pagination
-              page={currentPage}
-              pageSize={pageSize}
-              total={total}
-              pageSizeOptions={PAGE_SIZE_OPTIONS}
-              onPageChange={setPage}
-              onPageSizeChange={(size) => { setPageSize(size); setPage(1); }}
-            />
-          )}
-          {infinite && (
-            <div className="banner">Showing {infiniteItems.length} of {total}. Scroll to load more.</div>
-          )}
+          <Pagination
+            page={currentPage}
+            pageSize={pageSize}
+            total={total}
+            pageSizeOptions={PAGE_SIZE_OPTIONS}
+            onPageChange={setPage}
+            onPageSizeChange={(size) => { setPageSize(size); setPage(1); }}
+          />
         </>
       )}
 

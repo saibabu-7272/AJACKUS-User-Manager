@@ -1,7 +1,7 @@
 /* TopBar styles */
 .topbar {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -12,7 +12,9 @@
   margin: 0;
 }
 
-.topbar .middle { flex: 1; min-width: 260px; }
+.topbar .middle { flex: 1; min-width: 320px; }
+
+.topbar .right { display: flex; align-items: center; gap: 12px; margin-left: 12px; }
 
 .search {
   width: 100%;

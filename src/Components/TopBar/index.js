@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-export default function TopBar({ search, onSearchChange, onAdd, onOpenFilters, infinite = false, onToggleInfinite }) {
+export default function TopBar({ search, onSearchChange, onAdd, onOpenFilters }) {
   return (
     <div className="topbar">
       <div className="left">
@@ -16,15 +16,6 @@ export default function TopBar({ search, onSearchChange, onAdd, onOpenFilters, i
         />
       </div>
       <div className="right">
-        <label className="toggle" title="Enable infinite scrolling">
-          <input
-            type="checkbox"
-            checked={infinite}
-            onChange={(e) => onToggleInfinite && onToggleInfinite(e.target.checked)}
-            aria-label="Toggle infinite scroll"
-          />
-          <span>Infinite</span>
-        </label>
         <button className="btn" onClick={onOpenFilters}>Filters</button>
         <button className="btn primary" onClick={onAdd}>Add User</button>
       </div>
